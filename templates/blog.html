@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Blog працює ✅</h1>
+
+<p>Якщо ти бачиш цей текст — шаблон підключений правильно.</p>
+
+{% for post in object_list %}
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.body }}</p>
+  <hr>
+{% empty %}
+  <p><b>Немає дописів.</b> Додай їх через адмінку: /admin</p>
+{% endfor %}
+
+{% endblock content %}

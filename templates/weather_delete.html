@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Видалити запис</h1>
+<p>Видалити запис за дату <b>{{ object.date }}</b>?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Так, видалити</button>
+</form>
+<p><a href="{% url 'home' %}">Скасувати</a></p>
+{% endblock content %}

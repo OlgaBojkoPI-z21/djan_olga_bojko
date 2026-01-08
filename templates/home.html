@@ -3,6 +3,8 @@
 {% block content %}
 <h1>Атмосферні вимірювання</h1>
 
+<p><a href="{% url 'weather_new' %}">➕ Додати запис</a></p>
+
 <table border="1" cellpadding="6">
   <tr>
     <th>Дата</th>
@@ -10,6 +12,7 @@
     <th>Тиск, мм рт. ст.</th>
     <th>Швидкість вітру, м/с</th>
     <th>Ймовірність опадів, %</th>
+    <th>Дії</th>
   </tr>
 
   {% for post in object_list %}
@@ -19,11 +22,13 @@
     <td>{{ post.pressure }}</td>
     <td>{{ post.wind_speed }}</td>
     <td>{{ post.precipitation }}</td>
+    <td>
+      <a href="{% url 'weather_edit' post.pk %}">✏️</a> |
+      <a href="{% url 'weather_delete' post.pk %}">🗑️</a>
+    </td>
   </tr>
   {% empty %}
-  <tr>
-    <td colspan="5">Немає записів. Додайте дані через адмінку.</td>
-  </tr>
+  <tr><td colspan="6">Немає записів.</td></tr>
   {% endfor %}
 </table>
 {% endblock content %}
